@@ -74,6 +74,15 @@ class Dataset:
         """
         return iter(self.sample_dict.values())
 
+    @property
+    def files_per_sample(self):
+        """
+        Returns the number of files per sample.
+
+        :return: The number of files per sample.
+        """
+        return len(self.samples[0].files)
+
     def create_sample_tsv(self, output_dir_path, header, types=None):
         """
         Generates a TSV file in the output directory with a series of CLI paths for files belonging to each sample
