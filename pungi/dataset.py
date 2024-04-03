@@ -56,7 +56,6 @@ class Dataset:
         :param sample_id: The unique identifier for the sample.
         :param sample: A Sample object.
         :return: None
-
         """
         self.sample_dict[sample_id] = sample
 
@@ -209,7 +208,7 @@ def generate_dataset_from_fastq_directory(input_path, expected_files_per_sample=
     for identifier, sequencing_files in samples_files.items():
         if expected_files_per_sample:
             if len(sequencing_files) != expected_files_per_sample:
-                raise ValueError(f'Sample {identifier} should have three sequencing files')
+                raise ValueError(f'Sample {identifier} should have {expected_files_per_sample} sequencing files')
 
         sample = auto_create_sample_from_files(*sequencing_files, identifier_check=True,
                                                integrity_check=True)
