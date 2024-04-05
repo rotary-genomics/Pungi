@@ -151,7 +151,7 @@ def get_config_path(args, default_config_path):
 
 def is_config_parameter_true(config, parameter_name):
     """
-    Checks if the config parameter is true or false?
+    Checks if the config parameter is true or false.
 
     :param config: The ruamel.yaml config object that contains the parameter.
     :param parameter_name: The name of the parameter.
