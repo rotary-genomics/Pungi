@@ -40,6 +40,19 @@ def dump_yaml_config(config, output_config_path):
         yaml.dump(config, file)
 
 
+def validate_yaml_config_against_default(config, default_config_path):
+    """
+    Check if the given config file is missing any required keys compared to the default config file.
+
+    :param config: The current config file as a dictionary.
+    :param default_config_path: The path to the default config file.
+    """
+    default_config = load_yaml_config(default_config_path)
+    missing_keys = set(default_config.keys()) - set(config.keys())
+    if len(missing_keys) > 0:
+        raise ValueError(f'The found config file is missing the following parameters: {missing_keys}')
+
+
 def setup_run_directory(args, output_dir_path, run_files, config):
     """
     Sets up the basic configuration files inside the output directory.
