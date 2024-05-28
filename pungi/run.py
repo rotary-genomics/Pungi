@@ -73,6 +73,24 @@ def setup_run_directory(args, output_dir_path, run_files, config):
     # modify config to use available CPU and RAM.
     config = modify_config_with_available_computational_resources(config)
 
+    config = setup_database_dir(args, config, output_dir_path)
+
+    output_config_path = os.path.join(output_dir_path, 'config.yaml')
+
+    dump_yaml_config(config, output_config_path)
+
+    return output_config_path
+
+
+def setup_database_dir(args, config, output_dir_path):
+    """
+    Sets up the database directory path in the config file.
+
+    :param args: Command line arguments.
+    :param config: A ruamel.yaml config object.
+    :param output_dir_path: Output directory path.
+    :return: An updated ruamel.yaml config object.
+    """
     database_dir_path = get_cli_arg_path(args, 'database_dir')
     if database_dir_path:
         config['db_dir'] = database_dir_path
@@ -80,11 +98,7 @@ def setup_run_directory(args, output_dir_path, run_files, config):
         parent_dir = os.path.split(output_dir_path)[0]
         config['db_dir'] = os.path.join(parent_dir, 'rotary_database')
 
-    output_config_path = os.path.join(output_dir_path, 'config.yaml')
-
-    dump_yaml_config(config, output_config_path)
-
-    return output_config_path
+    return config
 
 
 def modify_config_with_available_computational_resources(config):
