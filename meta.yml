@@ -1,6 +1,6 @@
 package:
   name: pungi
-  version: "0.1.0"
+  version: "0.2.0"
 
 source:
   path: .
@@ -10,9 +10,9 @@ requirements:
     - python
     - pip
   run:
-    - ruamel.yaml=0.17.35
-    - psutil=5.9.5
-    - snakemake=7.*
+    - ruamel.yaml=0.17.*
+    - psutil=5.9.*
+    - snakemake=8.*
 
 build:
   script: pip install .
