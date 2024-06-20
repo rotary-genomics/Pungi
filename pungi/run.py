@@ -129,7 +129,7 @@ def run_snakemake_workflow(config_path, snake_file_path, output_dir_path, conda_
 
     snakemake_args = ['snakemake', '--snakefile', snake_file_path, '--configfile', config_path, '--directory',
                       output_dir_path, '--conda-prefix', conda_env_dir_path, '--conda-frontend',
-                      'mamba', '--use-conda', '--reason', '--rerun-incomplete', '--printshellcmds']
+                      'mamba', '--software-deployment-method conda', '--rerun-incomplete', '--printshellcmds']
 
     if jobs:
         snakemake_args = snakemake_args + ['--jobs', jobs]
