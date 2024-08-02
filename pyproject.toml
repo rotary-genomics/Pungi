@@ -13,7 +13,7 @@ readme = "README.md"
 dependencies = [
     "ruamel.yaml ~=0.17",
     "psutil ~=5.9",
-    "snakemake ~=7.32"
+    "snakemake >=7.0.0, <8.0.0"
 ]
 
 [tool.setuptools.packages]
